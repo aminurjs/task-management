@@ -6,6 +6,7 @@ import type { DashboardTotalCountsQuery } from "@/graphql/types";
 import { DASHBOARD_TOTAL_COUNTS_QUERY } from "@/graphql/queries";
 import { CalendarUpcomingEvents } from "@/components/home/upcoming-events";
 import { DealsChart } from "@/components/home/deal-chart";
+import { TotalCountCart } from "@/components/home/total-count-cart";
 
 export const Home = () => {
   const { data, isLoading } = useCustom<DashboardTotalCountsQuery>({
@@ -18,25 +19,25 @@ export const Home = () => {
     <div className="page-container">
       <Row gutter={[32, 32]}>
         <Col xs={24} sm={24} xl={8}>
-          {/* <DashboardTotalCountCard
+          <TotalCountCart
             resource="companies"
             isLoading={isLoading}
             totalCount={data?.data.companies.totalCount}
-          /> */}
+          />
         </Col>
         <Col xs={24} sm={24} xl={8}>
-          {/* <DashboardTotalCountCard
+          <TotalCountCart
             resource="contacts"
             isLoading={isLoading}
             totalCount={data?.data.contacts.totalCount}
-          /> */}
+          />
         </Col>
         <Col xs={24} sm={24} xl={8}>
-          {/* <DashboardTotalCountCard
+          <TotalCountCart
             resource="deals"
             isLoading={isLoading}
             totalCount={data?.data.deals.totalCount}
-          /> */}
+          />
         </Col>
       </Row>
 

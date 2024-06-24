@@ -39,7 +39,7 @@ export const DealsChart = () => {
       offsetY: -6,
     },
     yAxis: {
-      tickCount: 6,
+      tickCount: 4,
       label: {
         formatter: (v) => {
           return `$${Number(v) / 1000}k`;
