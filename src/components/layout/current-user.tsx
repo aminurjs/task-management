@@ -1,16 +1,19 @@
-import { Button, Popover } from "antd";
-import CustomAvatar from "../custom-avatar";
+import React from "react";
+
 import { useGetIdentity } from "@refinedev/core";
+
+import { SettingOutlined } from "@ant-design/icons";
+import { Button, Popover } from "antd";
 
 import type { User } from "@/graphql/schema.types";
 import { Text } from "../Text";
-import { useState } from "react";
-import { SettingOutlined } from "@ant-design/icons";
+import CustomAvatar from "../custom-avatar";
 import { AccountSettings } from "./account-setting";
 
 const CurrentUser = () => {
+  const [opened, setOpened] = React.useState(false);
   const { data: user } = useGetIdentity<User>();
-  const [opened, setOpened] = useState(false);
+
   const content = (
     <div
       style={{
@@ -18,7 +21,12 @@ const CurrentUser = () => {
         flexDirection: "column",
       }}
     >
-      <Text strong style={{ padding: "12px 20px" }}>
+      <Text
+        strong
+        style={{
+          padding: "12px 20px",
+        }}
+      >
         {user?.name}
       </Text>
       <div
@@ -47,10 +55,10 @@ const CurrentUser = () => {
     <>
       <Popover
         placement="bottomRight"
+        content={content}
         trigger="click"
         overlayInnerStyle={{ padding: 0 }}
         overlayStyle={{ zIndex: 999 }}
-        content={content}
       >
         <CustomAvatar
           name={user?.name}
@@ -69,5 +77,4 @@ const CurrentUser = () => {
     </>
   );
 };
-
 export default CurrentUser;

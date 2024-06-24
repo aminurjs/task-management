@@ -9,7 +9,7 @@ export const Header = () => {
   const { token } = useToken();
 
   const headerStyles: React.CSSProperties = {
-    backgroundColor: token.colorBgElevated,
+    backgroundColor: "#fff",
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
@@ -17,7 +17,7 @@ export const Header = () => {
     height: "64px",
     position: "sticky",
     top: 0,
-    zIndex: 999,
+    zIndex: 99,
   };
 
   return (
