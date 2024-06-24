@@ -7,6 +7,7 @@ import { DASHBOARD_TOTAL_COUNTS_QUERY } from "@/graphql/queries";
 import { CalendarUpcomingEvents } from "@/components/home/upcoming-events";
 import { DealsChart } from "@/components/home/deal-chart";
 import { TotalCountCart } from "@/components/home/total-count-cart";
+import { LatestActivities } from "@/components/home/latest-activites";
 
 export const Home = () => {
   const { data, isLoading } = useCustom<DashboardTotalCountsQuery>({
@@ -75,7 +76,10 @@ export const Home = () => {
           marginTop: "32px",
         }}
       >
-        <Col xs={24}>{/* <DashboardLatestActivities /> */}</Col>
+        <Col xs={24}>
+          {" "}
+          <LatestActivities />{" "}
+        </Col>
       </Row>
     </div>
   );
