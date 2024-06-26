@@ -18,6 +18,7 @@ import Layout from "./components/layout";
 import { resources } from "./config/resources";
 import Companies from "./pages/companies";
 import CompanyCreate from "./pages/companies/create";
+import { CompanyEditPage } from "./pages/companies/edit";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
                 <Route path="companies">
                   <Route index element={<Companies />} />
                   <Route path="new" element={<CompanyCreate />} />
+                  <Route path="edit/:id" element={<CompanyEditPage />} />
                 </Route>
               </Route>
             </Routes>
