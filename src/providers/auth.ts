@@ -4,20 +4,9 @@ import { API_URL, dataProvider } from "./data";
 
 // For demo purposes and to make it easier to test the app, you can use the following credentials
 export const authCredentials = {
-  email: "michael.scott@dundermifflin.com",
-  password: "demodemo",
+  email: "dev.aminur@gmail.com",
+  password: "123456",
 };
-
-const REGISTER_USER_MUTATION = `
-    mutation RegisterUser($email: String!, $password: String!) {
-        register(input: { email: $email, password: $password }) {
-            user {
-                id
-                email
-            }
-        }
-    }
-`;
 
 export const authProvider: AuthProvider = {
   login: async ({ email }) => {
