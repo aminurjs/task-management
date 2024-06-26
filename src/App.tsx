@@ -21,6 +21,7 @@ import CompanyCreate from "./pages/companies/create";
 import { CompanyEditPage } from "./pages/companies/edit";
 import { TasksListPage } from "./pages/Tasks/lists";
 import { TasksCreatePage } from "./pages/Tasks/create";
+import { TasksEditPage } from "./pages/Tasks/edit";
 
 function App() {
   return (
@@ -73,7 +74,7 @@ function App() {
                   }
                 >
                   <Route path="new" element={<TasksCreatePage />} />
-                  {/* <Route path="edit/:id" element={<TasksEditPage />} /> */}
+                  <Route path="edit/:id" element={<TasksEditPage />} />
                 </Route>
               </Route>
             </Routes>
