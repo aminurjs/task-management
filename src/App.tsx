@@ -16,6 +16,7 @@ import { authProvider } from "./providers/auth";
 import { ForgotPassword, Home, Login, Register } from "./pages";
 import Layout from "./components/layout";
 import { resources } from "./config/resources";
+import Companies from "./pages/companies";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
                 }
               >
                 <Route index element={<Home />} />
+                <Route path="companies" element={<Companies />} />
               </Route>
             </Routes>
             <RefineKbar />
