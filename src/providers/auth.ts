@@ -1,4 +1,4 @@
-import { AuthBindings } from "@refinedev/core";
+import { AuthProvider } from "@refinedev/core";
 
 import { API_URL, dataProvider } from "./data";
 
@@ -8,7 +8,18 @@ export const authCredentials = {
   password: "demodemo",
 };
 
-export const authProvider: AuthBindings = {
+const REGISTER_USER_MUTATION = `
+    mutation RegisterUser($email: String!, $password: String!) {
+        register(input: { email: $email, password: $password }) {
+            user {
+                id
+                email
+            }
+        }
+    }
+`;
+
+export const authProvider: AuthProvider = {
   login: async ({ email }) => {
     try {
       // call the login mutation
@@ -145,6 +156,50 @@ export const authProvider: AuthBindings = {
       return data.me;
     } catch (error) {
       return undefined;
+    }
+  },
+  register: async ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => {
+    try {
+      // call the register mutation
+      const { data } = await dataProvider.custom({
+        url: API_URL,
+        method: "post",
+        headers: {},
+        meta: {
+          variables: { email, password },
+          // pass the email and password to register the user
+          rawQuery: `
+                    mutation Register($email: String!, $password: String!) {
+                        register(registerInput: { email: $email, password: $password }) {
+                            id
+                            email
+                        }
+                    }
+                `,
+        },
+      });
+
+      return {
+        success: true,
+        user: data.register,
+        message: "Registration successful",
+      };
+    } catch (e) {
+      const error = e as Error;
+
+      return {
+        success: false,
+        error: {
+          message: "message" in error ? error.message : "Registration failed",
+          name: "name" in error ? error.name : "Registration Error",
+        },
+      };
     }
   },
 };
