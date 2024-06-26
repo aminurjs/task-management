@@ -17,6 +17,7 @@ import { ForgotPassword, Home, Login, Register } from "./pages";
 import Layout from "./components/layout";
 import { resources } from "./config/resources";
 import Companies from "./pages/companies";
+import CompanyCreate from "./pages/companies/create";
 
 function App() {
   return (
@@ -55,7 +56,10 @@ function App() {
                 }
               >
                 <Route index element={<Home />} />
-                <Route path="companies" element={<Companies />} />
+                <Route path="companies">
+                  <Route index element={<Companies />} />
+                  <Route path="new" element={<CompanyCreate />} />
+                </Route>
               </Route>
             </Routes>
             <RefineKbar />
